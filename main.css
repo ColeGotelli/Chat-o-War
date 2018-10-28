@@ -24,3 +24,20 @@ body {
 	font-size: 16px;
 	visibility: visible;
 }
+
+#color {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 60px;
+    text-align: left;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 16px;
+}
+
+#color-container {
+    float: left;
+    position: relative;
+    left: 0%;
+}
