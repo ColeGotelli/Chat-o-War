@@ -5,7 +5,9 @@
 $(document).ready(function () {
     var button1TotalVotes;
     var button2TotalVotes;
-    var width;
+    var option1Width;
+    var option2Width;
+    var option2x;
 
     // Clear variables and set display to '0'
     function reset() {
@@ -13,7 +15,9 @@ $(document).ready(function () {
         $("#button2count").html("0");
         button1TotalVotes = 0;
         button2TotalVotes = 0;
-        width = 50;
+        option1Width = 50;
+        option2Width = 50;
+        option2x = 90;
     }
 
     reset();
@@ -33,24 +37,26 @@ $(document).ready(function () {
     $("#button1").click(function () {
         //$("#button1").hide();
         //$("#button2").hide();
-        team = 1;
         button1TotalVotes = button1TotalVotes + 1;
         //update graphic
         $("#button1Count").html('' + button1TotalVotes);
 
-        width = width + 10;
+        option1Width = option1Width + 10;
+        option2Width = option2Width - 10;
+        option2x = option2x - 10;
         draw();
     });
 
     $("#button2").click(function () {
         //$("#button1").hide();
         //$("#button2").hide();
-        team = 2;
         button2TotalVotes = button2TotalVotes + 1;
         //update graphic
         $("#button2Count").html('' + button2TotalVotes);
 
-        width = width - 10;
+        option1Width = option1Width - 10;
+        option2Width = option2Width + 10;
+        option2x = option2x + 10;
         draw();
     });
 
@@ -60,10 +66,10 @@ $(document).ready(function () {
             var context = canvas.getContext('2d');
             context.beginPath();
             context.fillStyle = "#6441A4";
-            context.fillRect(40, 40, width, 20);
+            context.fillRect(40, 40, option1Width, 20);
             context.moveTo(110, 75);
             context.fillStyle = "#ff0000";
-            context.fillRect(140, 40, 100-width, 20);
+            context.fillRect(option2x, 40, option2Width, 20);
             context.stroke();
         }
     };
