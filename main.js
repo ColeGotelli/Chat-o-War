@@ -5,6 +5,8 @@
 $(document).ready(function () {
     var button1TotalVotes;
     var button2TotalVotes;
+    var option1Width;
+    var opiton2Width;
 
     // Clear variables and set display to '0'
     function reset() {
@@ -12,6 +14,8 @@ $(document).ready(function () {
         $("#button2count").html("0");
         button1TotalVotes = 0;
         button2TotalVotes = 0;
+        option1Width = 0;
+        option2Width = 0;
     }
 
     reset();
@@ -29,8 +33,8 @@ $(document).ready(function () {
     $("#Question").html('' + question);
 
     $("#button1").click(function () {
-        $("#button1").hide();
-        $("#button2").hide();
+        //$("#button1").hide();
+        //$("#button2").hide();
         team = 1;
         button1TotalVotes = button1TotalVotes + 1;
         //update graphic
@@ -40,8 +44,8 @@ $(document).ready(function () {
     });
 
     $("#button2").click(function () {
-        $("#button1").hide();
-        $("#button2").hide();
+        //$("#button1").hide();
+        //$("#button2").hide();
         team = 2;
         button2TotalVotes = button2TotalVotes + 1;
         //update graphic
@@ -51,26 +55,29 @@ $(document).ready(function () {
     });
 
     function updateWar(team) {
-        // Set initial variables to values that we'll animate over time
-var x = 0;
-var y = 0;
+        if (team == 1) {
+            option1Width = 45;
+        }
+        else if (team == 2) {
+            option2Width = option2Width + 10;
+        }
+        draw();
 
-draw = function() {
-    background(255, 255, 255);
-    
-    noStroke();
-    fill(79, 255, 94);
-    
-    // Moves across the canvas, getting taller
-    ellipse(x, 200, 30, 30+x/3);
-    
-    // Moves down the canvas, getting wider
-    ellipse(200, y, 30+y/3, 30);
-    
-    // Add one to each of the variables
-    x++;
-    y++;
-};
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                var context = canvas.getContext('2d');
+                context.beginPath();
+                context.fillStyle = "#6441A4";
+                context.fillRect(74, 75, 10, 20);
+                context.moveTo(110, 75);
+                context.fillStyle = "#ff0000";
+                context.fillRect(150, 75, 10, 20);
+                //context.rect(75, 75, option1Width, 50);
+                //context.rect(75+option1Width,75, 100-option1Width, 50)
+                context.stroke();
+            }
+        };
     };
 
 });
