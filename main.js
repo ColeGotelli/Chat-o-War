@@ -3,7 +3,6 @@
 //var twitch = window.Twitch.ext;
 
 $(document).ready(function () {
-
     var button1TotalVotes;
     var button2TotalVotes;
 
@@ -16,7 +15,6 @@ $(document).ready(function () {
     }
 
     reset();
-    $("#dialog").dialog();
 
     //ask for user input 
     var question = prompt("Please enter your Question?", "Question");
@@ -26,7 +24,6 @@ $(document).ready(function () {
     if (question == null || answer1 == null || answer2 == null) {
         //exit();
     }
-
     $("#button1").prop('value', answer1);
     $("#button2").prop('value', answer2);
     $("#Question").html('' + question);
@@ -38,7 +35,6 @@ $(document).ready(function () {
         $("#button1Count").html('' + button1TotalVotes);
 
         updateWar(team);
-        $(".popup-overlay, .popup-content").removeClass("active");
     });
 
     $("#button2").click(function () {
@@ -48,7 +44,6 @@ $(document).ready(function () {
         $("#button2Count").html('' + button2TotalVotes);
 
         updateWar(team);
-        $(".popup-overlay, .popup-content").removeClass("active");
     });
 
     function updateWar(team) {
