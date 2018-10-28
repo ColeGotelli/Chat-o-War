@@ -8,32 +8,35 @@ $(document).ready(function () {
     var option1Width;
     var option2Width;
     var option2x;
+    var question;
+    var answer1;
+    var answer2;
 
     // Clear variables and set display to '0'
     function reset() {
-        $("#button1count").html("0");
-        $("#button2count").html("0");
+        $("#button1count").html('0');
+        $("#button2count").html('0');
         button1TotalVotes = 0;
         button2TotalVotes = 0;
         option1Width = 100;
         option2Width = 100;
         option2x = 140;
         draw();
+
+        //ask for user input 
+        question = prompt("Please enter your Question?", "Question");
+        answer1 = prompt("Please enter answer 1?", "Answer 1");
+        answer2 = prompt("Please enter answer 2?", "Answer 2");
+
+        $("#button1").prop('value', answer1);
+        $("#button2").prop('value', answer2);
+        $("#Question").html('' + question);
+
+        $("#button1").show();
+        $("#button2").show();
     }
 
     reset();
-
-    //ask for user input 
-    var question = prompt("Please enter your Question?", "Question");
-    var answer1 = prompt("Please enter answer 1?", "Answer 1");
-    var answer2 = prompt("Please enter answer 2?", "Answer 2");
-
-    if (question == null || answer1 == null || answer2 == null) {
-        //exit();
-    }
-    $("#button1").prop('value', answer1);
-    $("#button2").prop('value', answer2);
-    $("#Question").html('' + question);
 
     $("#button1").click(function () {
         //$("#button1").hide();
@@ -78,12 +81,18 @@ $(document).ready(function () {
         if (button1TotalVotes > button2TotalVotes) {
             $("#Question").html('The Winner is ' + answer1 + '!!!!');
         }
-        if (button1TotalVotes < button2TotalVotes) {
+        else if (button2TotalVotes > button1TotalVotes) {
             $("#Question").html('The Winner is ' + answer2 + '!!!!');
         }
         else {
             $("#Question").html('It was a tie. Lame.');
         }
+    });
+
+    $("#button4").click(function () {
+        reset();
+        $("#button2Count").html('' + button2TotalVotes);
+        $("#button1Count").html('' + button2TotalVotes);
     });
 
     function draw() {
