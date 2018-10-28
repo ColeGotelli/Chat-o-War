@@ -11,7 +11,6 @@ body {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	visibility: visible;
 }
 
 .button {
@@ -22,22 +21,34 @@ body {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+}
+
+#option1 {
+	background-color: orange;
+	position: absolute;
+	height: 60%;
+	width: 60%;
+	left: 20%;
+	top: 20%;
 	visibility: visible;
 }
 
-#color {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 60px;
-    text-align: left;
-    text-decoration: none;
-    /* display: inline-block; */
-    font-size: 16px;
+#option2 {
+	background-color: blue;
+	position: absolute;
+	height: 60%;
+	width: 60%;
+	left: 20%;
+	top: 20%;
+	visibility: visible;
 }
 
-#color-container {
-    float: left;
-    position: relative;
-    left: 0%;
+.box {
+	background-color: #6441A4;
+	position: absolute;
+	height: 60%;
+	width: 60%;
+	left: 20%;
+	top: 20%;
+	visibility: visible;
 }
