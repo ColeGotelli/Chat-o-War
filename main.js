@@ -29,6 +29,8 @@ $(document).ready(function () {
     $("#Question").html('' + question);
 
     $("#button1").click(function () {
+        $("#button1").hide();
+        $("#button2").hide();
         team = 1;
         button1TotalVotes = button1TotalVotes + 1;
         //update graphic
@@ -38,6 +40,8 @@ $(document).ready(function () {
     });
 
     $("#button2").click(function () {
+        $("#button1").hide();
+        $("#button2").hide();
         team = 2;
         button2TotalVotes = button2TotalVotes + 1;
         //update graphic
