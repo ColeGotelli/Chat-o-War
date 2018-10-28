@@ -5,8 +5,7 @@
 $(document).ready(function () {
     var button1TotalVotes;
     var button2TotalVotes;
-    var option1Width;
-    var opiton2Width;
+    var width;
 
     // Clear variables and set display to '0'
     function reset() {
@@ -14,8 +13,7 @@ $(document).ready(function () {
         $("#button2count").html("0");
         button1TotalVotes = 0;
         button2TotalVotes = 0;
-        option1Width = 0;
-        option2Width = 0;
+        width = 50;
     }
 
     reset();
@@ -40,7 +38,8 @@ $(document).ready(function () {
         //update graphic
         $("#button1Count").html('' + button1TotalVotes);
 
-        updateWar(team);
+        width = width + 10;
+        draw();
     });
 
     $("#button2").click(function () {
@@ -51,33 +50,22 @@ $(document).ready(function () {
         //update graphic
         $("#button2Count").html('' + button2TotalVotes);
 
-        updateWar(team);
+        width = width - 10;
+        draw();
     });
 
-    function updateWar(team) {
-        if (team == 1) {
-            option1Width = 45;
+    function draw() {
+        var canvas = document.getElementById('canvas');
+        if (canvas.getContext) {
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.fillStyle = "#6441A4";
+            context.fillRect(40, 40, width, 20);
+            context.moveTo(110, 75);
+            context.fillStyle = "#ff0000";
+            context.fillRect(140, 40, 100-width, 20);
+            context.stroke();
         }
-        else if (team == 2) {
-            option2Width = option2Width + 10;
-        }
-        draw();
-
-        function draw() {
-            var canvas = document.getElementById('canvas');
-            if (canvas.getContext) {
-                var context = canvas.getContext('2d');
-                context.beginPath();
-                context.fillStyle = "#6441A4";
-                context.fillRect(74, 75, 10, 20);
-                context.moveTo(110, 75);
-                context.fillStyle = "#ff0000";
-                context.fillRect(150, 75, 10, 20);
-                //context.rect(75, 75, option1Width, 50);
-                //context.rect(75+option1Width,75, 100-option1Width, 50)
-                context.stroke();
-            }
-        };
     };
 
 });
