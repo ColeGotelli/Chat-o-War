@@ -18,6 +18,7 @@ $(document).ready(function () {
         option1Width = 100;
         option2Width = 100;
         option2x = 140;
+        draw();
     }
 
     reset();
