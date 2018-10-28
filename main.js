@@ -44,9 +44,10 @@ $(document).ready(function () {
         option1Width = option1Width + 10;
         option2Width = option2Width - 10;
         option2x = option2x + 10;
-        if (option1Width > 200) {
-            option1Width == 200;
-            option2x = 240;
+        if (option1Width === 200) {
+            option1Width = 190;
+            option2Width = option2Width + 10;
+            option2x = 230;
         }
         draw();
     });
@@ -61,9 +62,10 @@ $(document).ready(function () {
         option1Width = option1Width - 10;
         option2Width = option2Width + 10;
         option2x = option2x - 10;
-        if (option2Width > 200) {
-            option2Width = 200;
-            option2x = 40;
+        if (option2Width === 200) {
+            option2Width = 190;
+            option1Width = option1Width + 10;
+            option2x = 50;
         }
         draw();
     });
@@ -90,7 +92,6 @@ $(document).ready(function () {
             context.beginPath();
             context.fillStyle = "#6441A4";
             context.fillRect(40, 40, option1Width, 20);
-            context.moveTo(110, 75);
             context.fillStyle = "#ff0000";
             context.fillRect(option2x, 40, option2Width, 20);
             context.stroke();
