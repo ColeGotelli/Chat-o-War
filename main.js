@@ -1,49 +1,55 @@
 // JavaScript source code
 
-var twitch = window.Twitch.ext;
+//var twitch = window.Twitch.ext;
 
 $(document).ready(function () {
+
     var button1TotalVotes;
     var button2TotalVotes;
-    var $displayButton1 = $(".button1count");
-    var $displayButton2 = $(".button2count");
 
     // Clear variables and set display to '0'
     function reset() {
-        $displayButton1.text("0");
-        $displayButton2.text("0");
+        $("#button1count").html("0");
+        $("#button2count").html("0");
         button1TotalVotes = 0;
         button2TotalVotes = 0;
     }
 
     reset();
+    $("#dialog").dialog();
 
-    $('.button1').click(function () {
-        $displayButton1.text = 6;
+    //ask for user input 
+    var question = prompt("Please enter your Question?", "Question");
+    var answer1 = prompt("Please enter answer 1?", "Answer 1");
+    var answer2 = prompt("Please enter answer 2?", "Answer 2");
+
+    if (question == null || answer1 == null || answer2 == null) {
+        //exit();
+    }
+
+    $("#button1").prop('value', answer1);
+    $("#button2").prop('value', answer2);
+    $("#Question").html('' + question);
+
+    $("#button1").click(function () {
         team = 1;
-        updateVoteCount(team);
+        button1TotalVotes = button1TotalVotes + 1;
+        //update graphic
+        $("#button1Count").html('' + button1TotalVotes);
+
         updateWar(team);
+        $(".popup-overlay, .popup-content").removeClass("active");
     });
 
-    $('.button2').click(function () {
+    $("#button2").click(function () {
         team = 2;
-        updateVoteCount(team);
-        updateWar(team);
-    });
+        button2TotalVotes = button2TotalVotes + 1;
+        //update graphic
+        $("#button2Count").html('' + button2TotalVotes);
 
-    function updateVoteCount(team) {
-        if (team == 1) {
-            button1TotalVotes = button1TotalVotes + 1;
-            //update graphic
-            $displayButton1.text = button1TotalVotes;
-        }
-        else if (team == 2) {
-            button2TotalVotes = button2TotalVotes + 1;
-            //update graphic
-            $displayButton2.text = button2TotalVotes;
-        }
-        team = 0;
-    };
+        updateWar(team);
+        $(".popup-overlay, .popup-content").removeClass("active");
+    });
 
     function updateWar(team) {
         //Cole
