@@ -29,6 +29,7 @@ $(document).ready(function () {
         $("#questionBox").show();
         $("#answer1Box").show();
         $("#answer2Box").show();
+        $("#button5").show();
     }
 
     reset();
@@ -46,6 +47,7 @@ $(document).ready(function () {
         $("#questionBox").hide();
         $("#answer1Box").hide();
         $("#answer2Box").hide();
+        $("#button5").hide();
     });
 
     $("#button1").click(function () {
