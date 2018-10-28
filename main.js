@@ -15,9 +15,9 @@ $(document).ready(function () {
         $("#button2count").html("0");
         button1TotalVotes = 0;
         button2TotalVotes = 0;
-        option1Width = 50;
-        option2Width = 50;
-        option2x = 90;
+        option1Width = 100;
+        option2Width = 100;
+        option2x = 140;
     }
 
     reset();
@@ -43,7 +43,11 @@ $(document).ready(function () {
 
         option1Width = option1Width + 10;
         option2Width = option2Width - 10;
-        option2x = option2x - 10;
+        option2x = option2x + 10;
+        if (option1Width > 200) {
+            option1Width == 200;
+            option2x = 240;
+        }
         draw();
     });
 
@@ -56,8 +60,27 @@ $(document).ready(function () {
 
         option1Width = option1Width - 10;
         option2Width = option2Width + 10;
-        option2x = option2x + 10;
+        option2x = option2x - 10;
+        if (option2Width > 200) {
+            option2Width = 200;
+            option2x = 40;
+        }
         draw();
+    });
+
+    $("#button3").click(function () {
+        $("#button1").hide();
+        $("#button2").hide();
+
+        if (button1TotalVotes > button2TotalVotes) {
+            $("#Question").html('The Winner is ' + answer1 + '!!!!');
+        }
+        if (button1TotalVotes < button2TotalVotes) {
+            $("#Question").html('The Winner is ' + answer2 + '!!!!');
+        }
+        else {
+            $("#Question").html('It was a tie. Lame.');
+        }
     });
 
     function draw() {
